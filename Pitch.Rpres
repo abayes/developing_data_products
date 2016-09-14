@@ -1,0 +1,60 @@
+Need Help?
+========================================================
+ - Do you want to buy a new diamond?
+ - Is your knowledge of diamonds lacking?
+ - Do you want a fair price?
+ - Do you want the shopping experience to be easy?
+
+If you answered yes to any of these questions, this application can help you!
+Read on!
+
+The Perfect Diamond
+========================================================
+
+Ever heard of *"the 4 C's"*? We've created a model using "the 4 C's" of almost 54,000 diamonds so you can find your perfect diamond at your perfect price!
+
+- Cut
+- Clarity
+- Color
+- Carat
+
+The Model
+========================================================
+
+Here is our model.... Seems confusing, right? Well, we have good news...
+```{r, echo=FALSE}
+library(caret)
+library(ggplot2)
+```
+```{r}
+price_model <- train(log(price) ~ cut + clarity + color + carat, data = diamonds, method = 'lm')
+summary(price_model)
+```
+
+
+Good News!
+========================================================
+
+The good new is that you don't need to care! Our app takes care of all the confusing stuff for you.
+
+All you need to do is adjust the cut, clarity, color, and carat of the diamond. We'll tell you how much you can expect to pay for that diamond.
+
+But that's not all!
+
+Your Budget
+========================================================
+
+If you include your budget, we'll show you how the price of your diamond compares!
+
+```{r, echo=FALSE}
+budget_data <- data.frame(cbind(rbind(10000, 8000), rbind("budget", "price"), rbind("$$$", "$$$")))
+budget_data$X1 <- as.numeric(as.character(budget_data$X1))
+ggplot(budget_data, aes(X3, y = X1, fill = X2)) +
+  geom_bar(position = "identity", stat = "identity", alpha = .75,  fill = c("steelblue", "red")) +
+  geom_text(aes(label = c("Max Budget", "Diamond Price"), y = .05*max(X1) + X1)) +
+  ggtitle("Your Budget") +
+  xlab("") +
+  ylab("") +
+  theme(axis.text.x = element_blank(),
+        axis.text.x = element_blank())
+```

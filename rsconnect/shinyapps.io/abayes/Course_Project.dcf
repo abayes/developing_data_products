@@ -1,0 +1,10 @@
+name: Course_Project
+account: abayes
+server: shinyapps.io
+appId: 125616
+bundleId: 557293
+url: https://abayes.shinyapps.io/Course_Project/
+when: 1473860692.20194
+asMultiple: FALSE
+asStatic: FALSE
+ignoredFiles: Pitch.md|Pitch.Rpres|Pitch-figure/unnamed-chunk-2-1.png|Pitch-figure/unnamed-chunk-3-1.png
